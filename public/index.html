@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recepción · Gimnasio</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/vendor/fonts/barlow-condensed/700.css">
+  <link rel="stylesheet" href="/vendor/fonts/ibm-plex-sans/400.css">
+  <link rel="stylesheet" href="/vendor/fonts/ibm-plex-sans/500.css">
+  <link rel="stylesheet" href="/vendor/fonts/ibm-plex-sans/600.css">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/vendor/html5-qrcode.min.js" defer></script>
+  <script type="module" src="/js/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 7v10M3 9.5v5M18 7v10M21 9.5v5M6 12h12"/></svg>
+      </div>
+      <span class="display brand-name" id="gym-name">Gimnasio</span>
+    </div>
+    <nav class="tabs" aria-label="Secciones">
+      <a class="tab" href="#/entrada" data-route="entrada">Entrada</a>
+      <a class="tab" href="#/mensualidades" data-route="mensualidades">Mensualidades</a>
+      <a class="tab" href="#/nuevo" data-route="nuevo">Nuevo miembro</a>
+      <a class="tab" href="#/clientes" data-route="clientes">Pase diario</a>
+      <a class="tab" href="#/reportes" data-route="reportes">Reportes</a>
+      <a class="tab" href="#/ajustes" data-route="ajustes">Ajustes</a>
+    </nav>
+    <div class="topbar-right">
+      <span id="today-label"></span>
+      <span class="display clock" id="clock"></span>
+    </div>
+  </header>
+  <main id="view" class="page"></main>
+  <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+</body>
+</html>
