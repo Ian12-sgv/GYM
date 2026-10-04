@@ -236,6 +236,7 @@ const ICONS = {
   calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
   chat: '<path d="M4 5h16v11H8l-4 4z"/>',
   qr: '<path d="M3 7V4h3M21 7V4h-3M3 17v3h3M21 17v3h-3"/><rect x="7" y="7" width="4" height="4"/><rect x="13" y="7" width="4" height="4"/><rect x="7" y="13" width="4" height="4"/><path d="M13 13h4v4"/>',
+  download: '<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',
   print: '<path d="M7 9V3h10v6M7 17H4v-7h16v7h-3"/><rect x="7" y="14" width="10" height="7"/>',
 };
 

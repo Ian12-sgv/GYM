@@ -10,7 +10,7 @@ import { build } from 'esbuild';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
 const out = path.join(root, 'dist');
-const pkgDir = (name) => path.dirname(require.resolve(`${name}/package.json`));
+const pkgDir = (name) => path.join(root, 'node_modules', name);
 const copy = (from, to) => {
   fs.mkdirSync(path.dirname(to), { recursive: true });
   fs.copyFileSync(from, to);
@@ -32,6 +32,8 @@ for (const [pkg, weights] of Object.entries(fonts)) {
 }
 
 copy(path.join(pkgDir('html5-qrcode'), 'html5-qrcode.min.js'), path.join(out, 'vendor/html5-qrcode.min.js'));
+copy(path.join(pkgDir('jspdf'), 'dist/jspdf.umd.min.js'), path.join(out, 'vendor/jspdf.umd.min.js'));
+copy(path.join(pkgDir('jspdf-autotable'), 'dist/jspdf.plugin.autotable.min.js'), path.join(out, 'vendor/jspdf.plugin.autotable.min.js'));
 copy(require.resolve('sql.js/dist/sql-wasm-browser.wasm'), path.join(out, 'sql-wasm.wasm'));
 
 await build({

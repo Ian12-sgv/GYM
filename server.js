@@ -3,14 +3,12 @@ import http from 'node:http';
 import https from 'node:https';
 import os from 'node:os';
 import path from 'node:path';
-import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { openDb } from './src/db.js';
 import { createApi } from './src/api.js';
 import { loadOrCreateCert } from './src/cert.js';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
-const require = createRequire(import.meta.url);
 
 function argValue(name) {
   const i = process.argv.indexOf(name);
@@ -40,11 +38,15 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use('/api', createApi(db));
 
-const pkgDir = (name) => path.dirname(require.resolve(`${name}/package.json`));
+const pkgDir = (name) => path.join(root, 'node_modules', name);
 app.use('/vendor/fonts/barlow-condensed', express.static(pkgDir('@fontsource/barlow-condensed')));
 app.use('/vendor/fonts/ibm-plex-sans', express.static(pkgDir('@fontsource/ibm-plex-sans')));
 app.get('/vendor/html5-qrcode.min.js', (req, res) =>
   res.sendFile(path.join(pkgDir('html5-qrcode'), 'html5-qrcode.min.js'))
+);
+app.get('/vendor/jspdf.umd.min.js', (req, res) => res.sendFile(path.join(pkgDir('jspdf'), 'dist/jspdf.umd.min.js')));
+app.get('/vendor/jspdf.plugin.autotable.min.js', (req, res) =>
+  res.sendFile(path.join(pkgDir('jspdf-autotable'), 'dist/jspdf.plugin.autotable.min.js'))
 );
 app.use(express.static(path.join(root, 'public')));
 

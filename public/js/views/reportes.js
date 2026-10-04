@@ -1,5 +1,5 @@
 import { api } from '../api.js';
-import { html, setHTML, money, fmtMonth, fmtMonthLong } from '../ui.js';
+import { html, setHTML, money, fmtMonth, fmtMonthLong, icon, toast } from '../ui.js';
 
 const DAY_ORDER = [1, 2, 3, 4, 5, 6, 0];
 const DAY_LETTER = ['D', 'L', 'M', 'X', 'J', 'V', 'S'];
@@ -23,9 +23,12 @@ export async function render(root) {
   setHTML(
     root,
     html`<div class="stack" style="gap: 20px;">
-      <div>
-        <h1 class="display h1">Reportes</h1>
-        <p class="subtitle">Ingresos por tipo de cliente y horas de más tráfico</p>
+      <div class="spread" style="align-items: flex-end;">
+        <div>
+          <h1 class="display h1">Reportes</h1>
+          <p class="subtitle">Ingresos por tipo de cliente y horas de más tráfico</p>
+        </div>
+        <button type="button" class="btn primary lg" id="pdf-btn">${icon('download', 20, 2)} Descargar PDF</button>
       </div>
 
       <div class="tiles">
@@ -129,4 +132,21 @@ export async function render(root) {
       </div>
     </div>`
   );
+
+  const pdfBtn = root.querySelector('#pdf-btn');
+  pdfBtn.addEventListener('click', async () => {
+    pdfBtn.disabled = true;
+    const label = pdfBtn.innerHTML;
+    pdfBtn.textContent = 'Generando PDF…';
+    try {
+      const { downloadReportPdf } = await import('../report-pdf.js');
+      const file = await downloadReportPdf();
+      toast(`Reporte descargado: ${file}`);
+    } catch (err) {
+      toast(err.message || 'No se pudo generar el PDF', 'error');
+    } finally {
+      pdfBtn.innerHTML = label;
+      pdfBtn.disabled = false;
+    }
+  });
 }
