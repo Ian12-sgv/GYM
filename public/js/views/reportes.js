@@ -76,7 +76,7 @@ export async function render(root) {
         </div>
       </section>
 
-      <div class="grid-2" style="grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);">
+      <div class="grid-2">
         <section class="card stack">
           <div>
             <h2 style="margin: 0; font-size: 18px;">Afluencia por hora</h2>

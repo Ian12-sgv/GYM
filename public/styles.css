@@ -92,7 +92,8 @@ button:disabled { cursor: progress; opacity: 0.6; }
 .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .spread { display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
 .stack { display: flex; flex-direction: column; gap: 14px; }
-.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 14px; }
+@media (min-width: 600px) { .span-2 { grid-column: span 2; } }
 .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 @media (max-width: 960px) {
   .grid-2 { grid-template-columns: minmax(0, 1fr); }
@@ -106,8 +107,10 @@ button:disabled { cursor: progress; opacity: 0.6; }
   .topbar-right { grid-column: 2; grid-row: 1; }
   #today-label { display: none; }
 }
+.table .chip { white-space: nowrap; }
 @media (max-width: 560px) {
   .page { padding: 16px; }
+  .btn { white-space: normal; text-align: center; }
   .two { grid-template-columns: minmax(0, 1fr); }
 }
 
@@ -155,14 +158,14 @@ a.btn:hover { color: inherit; }
 a.btn.primary:hover, a.btn.light:hover { color: var(--accent-ink); }
 
 /* Botones de opción (plan, método de pago, filtros) */
-.opts { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.opts { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(min(120px, 100%), 1fr)); }
 .opt {
   min-height: 44px; border: 1px solid var(--line-strong); background: var(--field);
   border-radius: 10px; font-size: 14px; padding: 0 10px;
 }
 .opt[aria-pressed="true"] { border: 2px solid var(--accent); background: var(--accent-bg); color: var(--accent-soft); font-weight: 600; }
 .opts.orange .opt[aria-pressed="true"] { border-color: var(--orange); background: var(--orange-bg); color: var(--orange-soft); }
-.opts.plans { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.opts.plans { grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 10px; }
 .opts.plans .opt {
   text-align: left; min-height: 84px; padding: 10px 14px; border-radius: 12px;
   display: flex; flex-direction: column; gap: 2px; align-items: flex-start; justify-content: center;
@@ -181,7 +184,7 @@ a.btn.primary:hover, a.btn.light:hover { color: var(--accent-ink); }
 /* ---------- Chips ---------- */
 .chip {
   display: inline-block; font-size: 12px; font-weight: 600;
-  padding: 3px 10px; border-radius: 999px; white-space: nowrap;
+  padding: 3px 10px; border-radius: 999px; max-width: 100%; overflow-wrap: anywhere;
   background: #262A31; color: var(--soft);
 }
 .chip.plain { font-weight: 400; font-size: 13px; }

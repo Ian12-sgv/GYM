@@ -65,7 +65,7 @@ export async function render(root, params) {
           <div class="small muted">${typeof t.hint === 'function' ? t.hint(s) : t.hint}</div>
         </button>`
       )}
-      <section class="card tight stack" style="gap: 8px; grid-column: span 2; justify-content: space-between;">
+      <section class="card tight stack span-2" style="gap: 8px; justify-content: space-between;">
         <div class="card-label">Mensualidades cobradas en ${month}</div>
         <div class="row" style="align-items: baseline; gap: 8px;">
           <span class="display big">${money(billing.collected_cents)}</span>

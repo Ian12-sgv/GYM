@@ -51,7 +51,7 @@ export async function render(root, params) {
       </section>
       <section class="card stack" style="align-items: center;">
         <div class="card-label" style="align-self: stretch;">Carnet digital del miembro</div>
-        <div id="nm-carnet"></div>
+        <div id="nm-carnet" style="align-self: stretch; display: flex; justify-content: center;"></div>
         <div class="stack" id="nm-after" style="align-self: stretch;"></div>
       </section>
     </div>`

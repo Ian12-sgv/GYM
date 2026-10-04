@@ -30,7 +30,7 @@ export async function render(root) {
             <h2 class="display h2">Precios</h2>
             <p class="subtitle">Cambiar un precio solo aplica a los cobros nuevos: lo que ya se cobró no cambia.</p>
           </div>
-          <div class="tiles" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+          <div class="tiles" style="grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); gap: 12px;">
             ${priceField('daypass', 'Pase diario', 'Por cada día', s.daypass_price_cents)}
             ${store.config.plans
               .filter((p) => p.active)
@@ -43,7 +43,7 @@ export async function render(root) {
         <section class="card">
           <form class="stack" id="settings-form">
             <h2 class="display h2">Reglas y datos del gimnasio</h2>
-            <div class="tiles" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px 20px; align-items: start;">
+            <div class="tiles" style="grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 16px 20px; align-items: start;">
             ${FIELDS.map(
               (f) => html`<div class="field">
                 <label for="set-${f.key}">${f.label}</label>

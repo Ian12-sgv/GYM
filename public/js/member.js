@@ -205,7 +205,7 @@ function header(x, chip) {
 }
 
 function tiles(items) {
-  return html`<div class="tiles" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px;">
+  return html`<div class="tiles" style="grid-template-columns: repeat(auto-fit, minmax(min(120px, 100%), 1fr)); gap: 10px;">
     ${items.map(
       ([label, value]) => html`<div style="background: var(--field); border-radius: 10px; padding: 10px 12px;">
         <div class="small muted">${label}</div>
