@@ -1,0 +1,13 @@
+# Publica la DEMO del sistema (todo corre en el navegador con datos de ejemplo).
+[build]
+  command = "npm run build:demo"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# El service worker hace de servidor: siempre la versión más nueva.
+[[headers]]
+  for = "/demo-sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"

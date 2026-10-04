@@ -1,4 +1,4 @@
-import { tx, getSettings, saveSettings, DEFAULT_SETTINGS, PAYMENT_METHODS } from './db.js';
+import { tx, getSettings, saveSettings, DEFAULT_SETTINGS, PAYMENT_METHODS } from './schema.js';
 import * as D from './dates.js';
 
 export class HttpError extends Error {

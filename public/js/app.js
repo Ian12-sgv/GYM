@@ -51,6 +51,7 @@ tickClock();
 setInterval(tickClock, 10_000);
 
 try {
+  if (window.GYM_DEMO) await (await import('./demo.js')).startDemo(view);
   await reloadConfig();
   window.addEventListener('hashchange', route);
   route();

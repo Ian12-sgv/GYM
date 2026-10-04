@@ -36,6 +36,17 @@ npm run demo
 
 Crea `data/demo.db` con 160 miembros y dos meses de entradas inventadas, y abre el sistema con esos datos. No toca tu base real (`data/gym.db`).
 
+## Demo web (Netlify)
+
+Para presentar el proyecto hay una versión **demo que funciona solo en el navegador**: no necesita el servidor ni toca la base real. Las reglas del sistema corren en el navegador (SQLite compilado para la web) y cada visitante recibe su propia copia con datos de ejemplo, guardada en su navegador. La franja de arriba tiene un botón **Reiniciar demo**.
+
+```
+npm run demo:web     # la arma en dist/ y la abre en http://localhost:4173
+npm run build:demo   # solo la arma (es lo que ejecuta Netlify)
+```
+
+`netlify.toml` ya tiene la configuración: Netlify ejecuta `npm run build:demo` y publica la carpeta `dist/`.
+
 ## Cómo funciona
 
 ### Estados de la membresía
